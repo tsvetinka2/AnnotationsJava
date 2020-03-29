@@ -1,14 +1,13 @@
 package com.company;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 public class Main {
-    public static int sumNumber(int a, int b){
-        return a+b;
+    public static int sumNumber(int a, int b) {
+        return a + b;
     }
 
-    public static String getName(){
+    public static String getName() {
         return "Tsvetinka";
     }
 
@@ -17,12 +16,22 @@ public class Main {
         Method[] testMethods = classTests.getDeclaredMethods();
         int count = 0;
 
-        for (Method method: testMethods) {
-            try {
-                method.invoke(classTests.newInstance());
-                System.out.printf("%s - Test '%s' - passed %n", ++count, method.getName());
-            } catch (Throwable ex) {
-                System.out.printf("%s - Test '%s' - failed: %s %n", ++count, method.getName(), ex.getCause());
+        for (Method method : testMethods) {
+            if (method.isAnnotationPresent(MoreTest.class)) {
+                try {
+                    method.invoke(classTests.newInstance());
+                    System.out.printf("%s - Test '%s' - passed %n", ++count, method.getName());
+                } catch (Throwable ex) {
+                    System.out.printf("%s - Test '%s' - failed: %s %n", ++count, method.getName(), ex.getCause());
+                }
+            } else if (method.isAnnotationPresent(MyAnnotation.class)) {
+                try {
+                    method.invoke(classTests.newInstance());
+                    System.out.printf("%s - Test '%s' - passed %n", ++count, method.getName());
+                } catch (Throwable ex) {
+                    System.out.printf("%s - Test '%s' - failed: %s %n", ++count, method.getName(), ex.getCause());
+                }
+
             }
         }
     }

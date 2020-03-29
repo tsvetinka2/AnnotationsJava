@@ -1,7 +1,6 @@
 package com.company;
 
 import org.junit.Assert;
-import org.junit.Test;
 
 @MyAnnotation(firstName = "Tsvetinka", lastName = "Marinova", age = 24)
 public class Tests {
@@ -11,13 +10,13 @@ public class Tests {
         Assert.assertEquals("Tsvetinka", actual);
     }
 
-    @Test
+    @MoreTest
     public void TestIsZero(){
         int actual = Main.sumNumber(0, 0);
         Assert.assertEquals(0, actual);
     }
 
-    @Test
+    @MoreTest
     public void TestIsNotZero(){
         int actual = Main.sumNumber(5, 0);
         Assert.assertEquals(0, actual);
