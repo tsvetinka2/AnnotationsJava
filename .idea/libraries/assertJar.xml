@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="assertJar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/IdeaProjects/src/assertJar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

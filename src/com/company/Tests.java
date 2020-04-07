@@ -1,24 +1,25 @@
 package com.company;
 
-import org.junit.Assert;
+
+import Assert.myClassAssert;
 
 @MyAnnotation(firstName = "Tsvetinka", lastName = "Marinova", age = 24)
 public class Tests {
     @MyAnnotation
-    public void checkName() {
+    public void checkName() throws Exception{
         String actual = Main.getName();
-        Assert.assertEquals("Tsvetinka", actual);
+        myClassAssert.stringAssert("Tsvetinka", actual);
     }
 
     @MoreTest
-    public void TestIsZero(){
+    public void TestIsZero() throws  Exception{
         int actual = Main.sumNumber(0, 0);
-        Assert.assertEquals(0, actual);
+        myClassAssert.numbersAssert(0, actual);
     }
 
     @MoreTest
-    public void TestIsNotZero(){
+    public void TestIsNotZero() throws Exception{
         int actual = Main.sumNumber(5, 0);
-        Assert.assertEquals(0, actual);
+        myClassAssert.numbersAssert(0, actual);
     }
 }
