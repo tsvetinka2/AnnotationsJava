@@ -3,23 +3,36 @@ package com.company;
 
 import Assert.myClassAssert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @MyAnnotation(firstName = "Tsvetinka", lastName = "Marinova", age = 24)
 public class Tests {
     @MyAnnotation
-    public void checkName() throws Exception{
-        String actual = Main.getName();
+    public void checkFirstName() throws Exception{
+        String actual = Main.getFirstName();
         myClassAssert.stringAssert("Tsvetinka", actual);
     }
 
-    @MoreTest
-    public void TestIsZero() throws  Exception{
-        int actual = Main.sumNumber(0, 0);
-        myClassAssert.numbersAssert(0, actual);
+    @MyAnnotation
+    public void checkLastName() throws Exception{
+        String actual = Main.getLastName();
+        myClassAssert.stringAssert("Pavlova", actual);
     }
 
-    @MoreTest
-    public void TestIsNotZero() throws Exception{
-        int actual = Main.sumNumber(5, 0);
-        myClassAssert.numbersAssert(0, actual);
+    @MyAnnotation
+    public void checkAge() throws Exception{
+        int actual = Main.getAge();
+        myClassAssert.numbersAssert(24, actual);
     }
+
+    List<String> actions = new ArrayList<>();
+
+    public List<String> getActions(){
+        actions.add("CheckFirstName");
+        actions.add("CheckLastName");
+        actions.add("CheckAge");
+        return actions;
+    }
+
 }
